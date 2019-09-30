@@ -41,8 +41,6 @@ const cleanRows = rows => {
       .mapKeys((v, k) => _.camelCase(k))
       .mapValues((val, key) => {
         switch (columnTypes[key]) {
-          case "number":
-            return Number(val.replace(/,/g, ""));
           case "boolean":
             // when column contains null we return null, otherwise check boolean value
             return val === null ? null : val === "TRUE";
