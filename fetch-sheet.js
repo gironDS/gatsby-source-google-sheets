@@ -28,10 +28,6 @@ const getRows = (worksheet, options = {}) => new Promise((resolve, reject) => wo
 
 const cleanRows = rows => rows.map(r => _.chain(r).omit(["_xml", "app:edited", "save", "del", "_links"]).mapKeys((v, k) => _.camelCase(k)).mapValues(val => {
   if (val === "") return null;
-  // sheets apparently leaves commas in some #s depending on formatting
-  if (val.replace(/[,\.\d]/g, "").length === 0 && val !== "") {
-    return Number(val.replace(/,/g, ""));
-  }
   if (val === "TRUE") return true;
   if (val === "FALSE") return false;
   return val;
