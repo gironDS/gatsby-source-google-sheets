@@ -63,9 +63,6 @@ const guessColumnsDataTypes = rows =>
         // try to determine type based on the cell value
         if (!val) {
           return "null";
-        } else if (val.replace(/[,\.\d]/g, "").length === 0) {
-          // sheets apparently leaves commas in some #s depending on formatting
-          return "number";
         } else if (val === "TRUE" || val === "FALSE") {
           return "boolean";
         } else {
